@@ -1,3 +1,5 @@
+#!/bin/bash
+
 fib () {
     if [ $1 -le 1 ]; then
         echo $1
