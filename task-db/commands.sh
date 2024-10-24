@@ -1,7 +1,20 @@
 #!/bin/bash
 
 print_help () {
-    echo "Need arguments:"
+    echo "Usage:
+    $0 create_db <db_name>
+    $0 create_table <db_name> <table_name> <col1> <col2> ...
+    $0 insert_data <db_name> <table_name> <row>
+    $0 select_data <db_name> <table_name>
+    $0 delete_data <db_name> <table_name> <condition>
+Examples:
+    $0 create_db test_db
+    $0 create_table test_db test_table name age
+    $0 insert_data test_db test_table 'olek' 21
+    $0 select_data test_db test_table
+    $0 delete_data test_db test_table 'name=olek'
+    "
+    exit 1
 }
 
 # Create directory corresponding to the database
@@ -23,6 +36,8 @@ format_row () {
 }
 
 validate_row () {
+    local row
+
     row=$1
     if [ ${#row} -gt 39 ]; then
         echo "Maximum row length is 39 characters."

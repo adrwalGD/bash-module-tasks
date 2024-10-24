@@ -40,7 +40,7 @@ if [ "$debug" = true ]; then
   echo "User: $USER"
   echo "Script: $0"
   echo "Operation: $operation"
-  echo "Numbers: ${numbers[@]}"
+  echo "Numbers: " "${numbers[@]}"
 fi
 
 while [ "${#numbers[@]}" -gt 1 ]; do
@@ -48,4 +48,4 @@ while [ "${#numbers[@]}" -gt 1 ]; do
   numbers=("$result" "${numbers[@]:2}")
 done
 
-echo ${numbers[@]}
+echo "${numbers[@]}"
