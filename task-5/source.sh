@@ -64,8 +64,8 @@ while [ "$#" -gt 0 ]; do
                 exit 1
             fi
             operation="s"
-            A_WORD=$2
-            B_WORD=$3
+            A_WORD="$2"
+            B_WORD="$3"
             shift 3
             ;;
         *)
@@ -76,23 +76,23 @@ while [ "$#" -gt 0 ]; do
     esac
 done
 
-if [ -z $input_file ] || [ -z $output_file ] || [ -z $operation ]; then
+if [ -z "$input_file" ] || [ -z "$output_file" ] || [ -z "$operation" ]; then
     print_help
     exit 1
 fi
 
 
-case $operation in
+case "$operation" in
     r)
-        rev $input_file > $output_file
+        rev "$input_file" > "$output_file"
         ;;
     l)
-        cat $input_file | tr '[:upper:]' '[:lower:]' > $output_file
+        cat "$input_file" | tr '[:upper:]' '[:lower:]' > "$output_file"
         ;;
     v)
-        cat $input_file | tr 'a-zA-Z' 'A-Za-z' > $output_file
+        cat "$input_file" | tr 'a-zA-Z' 'A-Za-z' > "$output_file"
         ;;
     s)
-        cat $input_file | sed "s/$A_WORD/$B_WORD/g" > $output_file
+        cat "$input_file" | sed "s/$A_WORD/$B_WORD/g" > "$output_file"
         ;;
 esac
